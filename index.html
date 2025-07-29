@@ -1,31 +1,253 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GROMMAN | Скоро открытие</title>
-  <link rel="icon" href="./assets/favicon-site.svg" type="image/svg+xml">
+  <title>GROMMAN AI | Строим голосовой разум будущего</title>
+  <link rel="icon" type="image/svg+xml" href="svg/favicon-site.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #ffffff;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      background: #fafafa;
-      color: #333;
+      position: relative;
+      overflow-x: hidden;
     }
-    img {
-      max-width: 200px;
+
+    /* Фоновое изображение */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('assets/hero_image_assistant.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    /* Затемнение для лучшей читаемости текста */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
       margin-bottom: 1rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .logo img {
+      height: 3rem;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6);
+      line-height: 1.2;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 3px 8px rgba(0, 0, 0, 0.6);
+      opacity: 0.95;
+    }
+
+    .email {
+      display: inline-block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .email:hover {
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Адаптивность для планшетов */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .title {
+        font-size: 1.8rem;
+      }
+      
+      .description {
+        font-size: 1rem;
+      }
+      
+      .email {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .logo {
+        font-size: 1.8rem;
+      }
+      
+      .title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .description {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .email {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    /* Адаптивность для очень маленьких экранов */
+    @media (max-width: 360px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .title {
+        font-size: 1.3rem;
+      }
+      
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Социальные сети */
+    .social-bar {
+      position: fixed;
+      top: 40%;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .social-bar img {
+      width: 30px;
+      height: 30px;
+      filter: brightness(1);
+      transition: transform 0.3s ease;
+    }
+
+    .social-bar img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Адаптив: снизу по центру */
+    @media (max-width: 768px) {
+      .social-bar {
+        top: unset;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="./svg/logo-gromman.svg" alt="GROMMAN логотип">
-  <h1>Сайт скоро будет запущен</h1>
-  <p>GROMMAN | Логотипы и фирменные материалы</p>
+  <div class="container">
+    <div class="logo">
+      <img src="svg/logo-gromman.svg" alt="GROMMAN AI Logo">
+      GROMMAN AI
+    </div>
+    
+    <h1 class="title">Строим голосовой разум будущего</h1>
+    
+    <p class="description">
+      Мы — команда стартапа, создающая живых AI-ассистентов для отелей, бизнеса и повседневной жизни.<br><br>
+      Если у вас есть интересные предложения или желание участвовать — с удовольствием ждём. Мы открыты к сотрудничеству.
+    </p>
+    
+    <a href="mailto:info@gromman.com" class="email">info@gromman.com</a>
+  </div>
+
+  <div class="social-bar">
+    <a href="https://t.me/your_channel" target="_blank" aria-label="Telegram">
+      <img src="/assets/social/telegram.svg" alt="Telegram" />
+    </a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+      <img src="/assets/social/linkedin.svg" alt="LinkedIn" />
+    </a>
+    <a href="https://youtube.com/@yourchannel" target="_blank" aria-label="YouTube">
+      <img src="/assets/social/youtube.svg" alt="YouTube" />
+    </a>
+    <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp">
+      <img src="/assets/social/whatsapp.svg" alt="WhatsApp" />
+    </a>
+  </div>
 </body>
 </html> 
