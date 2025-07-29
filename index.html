@@ -8,6 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- i18next для мультиязычности -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.16/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@7.2.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -208,6 +212,37 @@
       transform: scale(1.2);
     }
 
+    /* Переключатель языков */
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .language-switcher select {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher select:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .language-switcher select:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
     /* Адаптив: снизу по центру */
     @media (max-width: 768px) {
       .social-bar {
@@ -217,6 +252,16 @@
         transform: translateX(-50%);
         flex-direction: row;
       }
+      
+      .language-switcher {
+        top: 10px;
+        right: 10px;
+      }
+      
+      .language-switcher select {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
     }
   </style>
 </head>
@@ -224,16 +269,35 @@
   <video autoplay muted loop playsinline id="bg-video">
     <source src="assets/media/istockphoto-1315953903-640_adpp_is.mp4" type="video/mp4">
   </video>
+  
+  <!-- Переключатель языков -->
+  <div class="language-switcher">
+    <select id="languageSwitcher">
+      <option value="en">🇺🇸 English</option>
+      <option value="ru">🇷🇺 Русский</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="uk">🇺🇦 Українська</option>
+      <option value="kk">🇰🇿 Қазақша</option>
+      <option value="uz">🇺🇿 O'zbekcha</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="fr">🇫🇷 Français</option>
+    </select>
+  </div>
+  
   <div class="container">
     <div class="logo">
       <img src="svg/logo-gromman.svg" alt="GROMMAN AI Logo">
       GROMMAN AI
     </div>
     
-    <h1 class="title">Строим голосовой разум будущего</h1>
+    <h1 class="title" id="slogan">Строим голосовой разум будущего</h1>
     
-    <p class="description">
-      Мы — команда стартапа, создающая живых AI-ассистентов для отелей, бизнеса и повседневной жизни.<br><br>
+    <p class="description" id="subtitle">
+      Мы — команда стартапа, создающая живых AI-ассистентов для отелей, бизнеса и повседневной жизни.
+    </p>
+    
+    <p class="description" id="invite">
       Если у вас есть интересные предложения или желание участвовать — с удовольствием ждём. Мы открыты к сотрудничеству.
     </p>
     
@@ -254,5 +318,114 @@
       <img src="/assets/social/whatsapp.svg" alt="WhatsApp" class="social-icon" />
     </a>
   </div>
+
+  <script>
+    // Переводы для всех языков
+    const resources = {
+      en: {
+        translation: {
+          slogan: "Building the voice intelligence of the future",
+          subtitle: "We are a startup team creating live AI assistants for hotels, businesses, and everyday life.",
+          invite: "If you have interesting proposals or wish to participate — we gladly await. We are open to cooperation."
+        }
+      },
+      ru: {
+        translation: {
+          slogan: "Строим голосовой разум будущего",
+          subtitle: "Мы — команда стартапа, создающая живых AI-ассистентов для отелей, бизнеса и повседневной жизни.",
+          invite: "Если у вас есть интересные предложения или желание участвовать — с удовольствием ждём. Мы открыты к сотрудничеству."
+        }
+      },
+      es: {
+        translation: {
+          slogan: "Construyendo la inteligencia de voz del futuro",
+          subtitle: "Somos un equipo de startup que crea asistentes de IA en vivo para hoteles, negocios y vida cotidiana.",
+          invite: "Si tienes propuestas interesantes o deseas participar, te esperamos con gusto. Estamos abiertos a la cooperación."
+        }
+      },
+      uk: {
+        translation: {
+          slogan: "Будуємо голосовий розум майбутнього",
+          subtitle: "Ми — команда стартапу, що створює живих AI-асистентів для готелів, бізнесу та повсякденного життя.",
+          invite: "Якщо у вас є цікаві пропозиції або бажання брати участь — з радістю чекаємо. Ми відкриті до співпраці."
+        }
+      },
+      kk: {
+        translation: {
+          slogan: "Болашақтың дауыстық интеллектісін құруда",
+          subtitle: "Біз — қонақ үйлер, бизнес және күнделікті өмір үшін тірі AI-көмекшілер жасайтын стартап тобымыз.",
+          invite: "Егер сізде қызықты ұсыныстар немесе қатысуға құштарлық болса — қуана-қуана күтеміз. Біз ынтымақтастыққа ашықпыз."
+        }
+      },
+      uz: {
+        translation: {
+          slogan: "Kelajakning ovozli intellektini qurishda",
+          subtitle: "Biz — mehmonxonalar, biznes va kundalik hayot uchun jonli AI-yordamchilar yaratadigan startap jamoasimaniz.",
+          invite: "Agar sizda qiziqarli takliflar yoki ishtirok etish istagi bo'lsa — xursandchilik bilan kutamiz. Biz hamkorlikka ochiqmiz."
+        }
+      },
+      it: {
+        translation: {
+          slogan: "Costruendo l'intelligenza vocale del futuro",
+          subtitle: "Siamo un team di startup che crea assistenti AI dal vivo per hotel, aziende e vita quotidiana.",
+          invite: "Se hai proposte interessanti o desideri partecipare, ti aspettiamo volentieri. Siamo aperti alla cooperazione."
+        }
+      },
+      de: {
+        translation: {
+          slogan: "Wir bauen die Sprachintelligenz der Zukunft",
+          subtitle: "Wir sind ein Startup-Team, das lebendige KI-Assistenten für Hotels, Unternehmen und den Alltag entwickelt.",
+          invite: "Wenn Sie interessante Vorschläge haben oder teilnehmen möchten, freuen wir uns darauf. Wir sind offen für Zusammenarbeit."
+        }
+      },
+      fr: {
+        translation: {
+          slogan: "Construire l'intelligence vocale du futur",
+          subtitle: "Nous sommes une équipe de startup créant des assistants IA en direct pour les hôtels, les entreprises et la vie quotidienne.",
+          invite: "Si vous avez des propositions intéressantes ou souhaitez participer, nous vous attendons avec plaisir. Nous sommes ouverts à la coopération."
+        }
+      }
+    };
+
+    // Инициализация i18next
+    i18next
+      .use(i18nextBrowserLanguageDetector)
+      .init({
+        lng: 'ru', // язык по умолчанию
+        fallbackLng: 'en',
+        debug: false,
+        resources: resources,
+        detection: {
+          order: ['localStorage', 'navigator'],
+          caches: ['localStorage']
+        }
+      }, function(err, t) {
+        // Обновляем текст при инициализации
+        updateContent();
+        
+        // Устанавливаем выбранный язык в селект
+        const languageSwitcher = document.getElementById('languageSwitcher');
+        languageSwitcher.value = i18next.language;
+      });
+
+    // Функция обновления контента
+    function updateContent() {
+      document.getElementById('slogan').textContent = i18next.t('slogan');
+      document.getElementById('subtitle').textContent = i18next.t('subtitle');
+      document.getElementById('invite').textContent = i18next.t('invite');
+    }
+
+    // Обработчик смены языка
+    document.getElementById('languageSwitcher').addEventListener('change', function(e) {
+      i18next.changeLanguage(e.target.value, function(err, t) {
+        updateContent();
+      });
+    });
+
+    // Обновляем контент при изменении языка
+    i18next.on('languageChanged', function() {
+      updateContent();
+    });
+  </script>
 </body>
 </html> 
