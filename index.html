@@ -28,20 +28,16 @@
       overflow-x: hidden;
     }
 
-    /* Фоновое изображение */
-    body::before {
-      content: '';
-      position: absolute;
+    /* Фоновое видео */
+    #bg-video {
+      position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('assets/hero_image_assistant.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.8;
-      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.6);
     }
 
     /* Затемнение для лучшей читаемости текста */
@@ -225,6 +221,9 @@
   </style>
 </head>
 <body>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="assets/media/istockphoto-1315953903-640_adpp_is.mp4" type="video/mp4">
+  </video>
   <div class="container">
     <div class="logo">
       <img src="svg/logo-gromman.svg" alt="GROMMAN AI Logo">
