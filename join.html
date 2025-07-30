@@ -84,9 +84,20 @@
       font-size: 2.2rem;
       font-weight: 600;
       color: #ffffff;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 12px rgba(0, 0, 0, 0.6);
       line-height: 1.2;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 3px 8px rgba(0, 0, 0, 0.6);
+      opacity: 0.95;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .form-container {
@@ -310,6 +321,10 @@
     
     <h1 class="title" id="join-title">Присоединиться к команде</h1>
     
+    <p class="description" id="join-description">
+      Хочешь в команду, которая строит голосовой разум для отелей? Заполни форму — и мы на связи.
+    </p>
+    
     <div class="form-container">
       <form id="join-form">
         <div class="form-group">
@@ -318,31 +333,40 @@
         </div>
         
         <div class="form-group">
-          <label for="email" id="email-label">Email</label>
+          <label for="email" id="email-label">Email *</label>
           <input type="email" id="email" name="email" required>
         </div>
         
         <div class="form-group">
-          <label for="role" id="role-label">Роль</label>
+          <label for="telegram" id="telegram-label">Telegram (опционально)</label>
+          <input type="text" id="telegram" name="telegram" placeholder="@username">
+        </div>
+        
+        <div class="form-group">
+          <label for="role" id="role-label">Вакансия *</label>
           <select id="role" name="role" required>
-            <option value="" id="role-placeholder">Выберите роль</option>
-            <option value="backend" id="role-backend">Бэкенд-разработчик (Python/FastAPI + Rasa Pro)</option>
-            <option value="frontend" id="role-frontend">Фронтенд / UI-разработчик (Web, Telegram-демо)</option>
-            <option value="devops" id="role-devops">DevOps / Инженер деплоя (Docker, CI/CD)</option>
-            <option value="content" id="role-content">Архитектор контента / голоса (Промпты, LLM, UX)</option>
-            <option value="producer" id="role-producer">Продюсер / SMM / Продвижение (TikTok, Telegram)</option>
-            <option value="other" id="role-other">Другое</option>
+            <option value="" id="role-placeholder">Выберите вакансию</option>
+            <option value="cto" id="role-cto">Технический директор (CTO)</option>
+            <option value="xai-architect" id="role-xai-architect">Архитектор XAI</option>
+            <option value="fullstack" id="role-fullstack">Fullstack-разработчик (FastAPI, Frontend)</option>
+            <option value="rasa-engineer" id="role-rasa-engineer">Rasa Pro инженер (CALM, LLM, Flow)</option>
+            <option value="ml-engineer" id="role-ml-engineer">ML-инженер / Vision / Audio AI</option>
+            <option value="ui-ux-designer" id="role-ui-ux-designer">UI/UX-дизайнер (веб/моб)</option>
+            <option value="content-maker" id="role-content-maker">Контент-мейкер / Маркетолог / TikTok</option>
+            <option value="product-manager" id="role-product-manager">Менеджер по продукту (Product/Project)</option>
+            <option value="lawyer" id="role-lawyer">Юрист / Документооборот</option>
+            <option value="coordinator" id="role-coordinator">Координатор по партнёрам / продажам / CRM</option>
           </select>
         </div>
         
         <div class="form-group">
-          <label for="message" id="message-label">Сообщение</label>
-          <textarea id="message" name="message" placeholder="Расскажите о себе и почему хотите присоединиться к команде..." required></textarea>
+          <label for="message" id="message-label">Кратко о себе</label>
+          <textarea id="message" name="message" placeholder="Расскажите о себе, опыте и почему хотите присоединиться к команде..." required></textarea>
         </div>
         
         <input type="hidden" name="source" value="form_team_request">
         
-        <button type="submit" class="submit-btn" id="submit-btn">Отправить заявку</button>
+        <button type="submit" class="submit-btn" id="submit-btn">Отправить</button>
       </form>
     </div>
     
@@ -356,171 +380,225 @@
       en: {
         translation: {
           "join-title": "Join the Team",
+          "join-description": "Want to join a team that builds voice intelligence for hotels? Fill out the form — and we'll be in touch.",
           "name-label": "Name",
-          "email-label": "Email",
-          "role-label": "Role",
-          "role-placeholder": "Select role",
-          "role-backend": "Backend Developer (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Frontend/UI Developer (Web, Telegram demo)",
-          "role-devops": "DevOps / Deploy Engineer (Docker, CI/CD)",
-          "role-content": "Content / Voice Architect (Prompts, LLM, UX)",
-          "role-producer": "Producer / SMM / Promotion (TikTok, Telegram)",
-          "role-other": "Other",
-          "message-label": "Message",
-          "message-placeholder": "Tell us about yourself and why you want to join the team...",
-          "submit-btn": "Send Application",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (optional)",
+          "role-label": "Position *",
+          "role-placeholder": "Select position",
+          "role-cto": "Technical Director (CTO)",
+          "role-xai-architect": "XAI Architect",
+          "role-fullstack": "Fullstack Developer (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro Engineer (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML Engineer / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX Designer (web/mobile)",
+          "role-content-maker": "Content Creator / Marketer / TikTok",
+          "role-product-manager": "Product Manager (Product/Project)",
+          "role-lawyer": "Lawyer / Document Management",
+          "role-coordinator": "Partnership Coordinator / Sales / CRM",
+          "message-label": "About yourself",
+          "message-placeholder": "Tell us about yourself, experience and why you want to join the team...",
+          "submit-btn": "Send",
           "back-link": "← Back to Home"
         }
       },
       ru: {
         translation: {
           "join-title": "Присоединиться к команде",
+          "join-description": "Хочешь в команду, которая строит голосовой разум для отелей? Заполни форму — и мы на связи.",
           "name-label": "Имя",
-          "email-label": "Email",
-          "role-label": "Роль",
-          "role-placeholder": "Выберите роль",
-          "role-backend": "Бэкенд-разработчик (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Фронтенд / UI-разработчик (Web, Telegram-демо)",
-          "role-devops": "DevOps / Инженер деплоя (Docker, CI/CD)",
-          "role-content": "Архитектор контента / голоса (Промпты, LLM, UX)",
-          "role-producer": "Продюсер / SMM / Продвижение (TikTok, Telegram)",
-          "role-other": "Другое",
-          "message-label": "Сообщение",
-          "message-placeholder": "Расскажите о себе и почему хотите присоединиться к команде...",
-          "submit-btn": "Отправить заявку",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (опционально)",
+          "role-label": "Вакансия *",
+          "role-placeholder": "Выберите вакансию",
+          "role-cto": "Технический директор (CTO)",
+          "role-xai-architect": "Архитектор XAI",
+          "role-fullstack": "Fullstack-разработчик (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro инженер (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML-инженер / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX-дизайнер (веб/моб)",
+          "role-content-maker": "Контент-мейкер / Маркетолог / TikTok",
+          "role-product-manager": "Менеджер по продукту (Product/Project)",
+          "role-lawyer": "Юрист / Документооборот",
+          "role-coordinator": "Координатор по партнёрам / продажам / CRM",
+          "message-label": "Кратко о себе",
+          "message-placeholder": "Расскажите о себе, опыте и почему хотите присоединиться к команде...",
+          "submit-btn": "Отправить",
           "back-link": "← Вернуться на главную"
         }
       },
       es: {
         translation: {
           "join-title": "Únete al Equipo",
+          "join-description": "¿Quieres unirte a un equipo que construye inteligencia de voz para hoteles? Completa el formulario — y estaremos en contacto.",
           "name-label": "Nombre",
-          "email-label": "Email",
-          "role-label": "Rol",
-          "role-placeholder": "Seleccionar rol",
-          "role-backend": "Desarrollador Backend (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Desarrollador Frontend/UI (Web, demo Telegram)",
-          "role-devops": "DevOps / Ingeniero de Despliegue (Docker, CI/CD)",
-          "role-content": "Arquitecto de Contenido / Voz (Prompts, LLM, UX)",
-          "role-producer": "Productor / SMM / Promoción (TikTok, Telegram)",
-          "role-other": "Otro",
-          "message-label": "Mensaje",
-          "message-placeholder": "Cuéntanos sobre ti y por qué quieres unirte al equipo...",
-          "submit-btn": "Enviar Solicitud",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (opcional)",
+          "role-label": "Posición *",
+          "role-placeholder": "Seleccionar posición",
+          "role-cto": "Director Técnico (CTO)",
+          "role-xai-architect": "Arquitecto XAI",
+          "role-fullstack": "Desarrollador Fullstack (FastAPI, Frontend)",
+          "role-rasa-engineer": "Ingeniero Rasa Pro (CALM, LLM, Flow)",
+          "role-ml-engineer": "Ingeniero ML / Visión / Audio AI",
+          "role-ui-ux-designer": "Diseñador UI/UX (web/móvil)",
+          "role-content-maker": "Creador de Contenido / Marketer / TikTok",
+          "role-product-manager": "Gerente de Producto (Product/Project)",
+          "role-lawyer": "Abogado / Gestión Documental",
+          "role-coordinator": "Coordinador de Alianzas / Ventas / CRM",
+          "message-label": "Sobre ti",
+          "message-placeholder": "Cuéntanos sobre ti, experiencia y por qué quieres unirte al equipo...",
+          "submit-btn": "Enviar",
           "back-link": "← Volver al Inicio"
         }
       },
       uk: {
         translation: {
           "join-title": "Приєднатися до команди",
+          "join-description": "Хочеш в команду, яка будує голосовий розум для готелів? Заповни форму — і ми на зв'язку.",
           "name-label": "Ім'я",
-          "email-label": "Email",
-          "role-label": "Роль",
-          "role-placeholder": "Виберіть роль",
-          "role-backend": "Бекенд-розробник (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Фронтенд / UI-розробник (Web, Telegram-демо)",
-          "role-devops": "DevOps / Інженер деплою (Docker, CI/CD)",
-          "role-content": "Архітектор контенту / голосу (Промпти, LLM, UX)",
-          "role-producer": "Продюсер / SMM / Просування (TikTok, Telegram)",
-          "role-other": "Інше",
-          "message-label": "Повідомлення",
-          "message-placeholder": "Розкажіть про себе і чому хочете приєднатися до команди...",
-          "submit-btn": "Надіслати заявку",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (опціонально)",
+          "role-label": "Вакансія *",
+          "role-placeholder": "Виберіть вакансію",
+          "role-cto": "Технічний директор (CTO)",
+          "role-xai-architect": "Архітектор XAI",
+          "role-fullstack": "Fullstack-розробник (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro інженер (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML-інженер / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX-дизайнер (веб/моб)",
+          "role-content-maker": "Контент-мейкер / Маркетолог / TikTok",
+          "role-product-manager": "Менеджер по продукту (Product/Project)",
+          "role-lawyer": "Юрист / Документообіг",
+          "role-coordinator": "Координатор по партнерам / продажам / CRM",
+          "message-label": "Коротко про себе",
+          "message-placeholder": "Розкажіть про себе, досвід і чому хочете приєднатися до команди...",
+          "submit-btn": "Надіслати",
           "back-link": "← Повернутися на головну"
         }
       },
       kk: {
         translation: {
           "join-title": "Топқа қосылу",
+          "join-description": "Қонақ үйлерге дауыстық интеллект жасайтын топқа қосылғыңыз келе ме? Форманы толтырыңыз — және біз байланыста боламыз.",
           "name-label": "Аты",
-          "email-label": "Email",
-          "role-label": "Рөл",
-          "role-placeholder": "Рөлді таңдаңыз",
-          "role-backend": "Бекенд-әзірлеуші (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Фронтенд / UI-әзірлеуші (Web, Telegram-демо)",
-          "role-devops": "DevOps / Деплой инженері (Docker, CI/CD)",
-          "role-content": "Контент / Дауыс сәулетшісі (Промпттар, LLM, UX)",
-          "role-producer": "Продюсер / SMM / Жарнама (TikTok, Telegram)",
-          "role-other": "Басқа",
-          "message-label": "Хабарлама",
-          "message-placeholder": "Өзіңіз туралы айтыңыз және неге топқа қосылғыңыз келетінін айтыңыз...",
-          "submit-btn": "Өтінішті жіберу",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (қосымша)",
+          "role-label": "Вакансия *",
+          "role-placeholder": "Вакансияны таңдаңыз",
+          "role-cto": "Техникалық директор (CTO)",
+          "role-xai-architect": "XAI сәулетшісі",
+          "role-fullstack": "Fullstack әзірлеуші (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro инженері (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML-инженер / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX дизайнері (веб/моб)",
+          "role-content-maker": "Контент-мейкер / Маркетолог / TikTok",
+          "role-product-manager": "Өнім менеджері (Product/Project)",
+          "role-lawyer": "Заңгер / Құжат айналымы",
+          "role-coordinator": "Серіктестік координаторы / сату / CRM",
+          "message-label": "Өзіңіз туралы",
+          "message-placeholder": "Өзіңіз, тәжірибеңіз туралы айтыңыз және неге топқа қосылғыңыз келетінін айтыңыз...",
+          "submit-btn": "Жіберу",
           "back-link": "← Басты бетке оралу"
         }
       },
       uz: {
         translation: {
           "join-title": "Jamoada qo'shilish",
+          "join-description": "Mehmonxonalar uchun ovozli intellekt yaratadigan jamoada qo'shilmoqchimisiz? Formani to'ldiring — va biz aloqada bo'lamiz.",
           "name-label": "Ism",
-          "email-label": "Email",
-          "role-label": "Rol",
-          "role-placeholder": "Rolni tanlang",
-          "role-backend": "Backend ishlab chiquvchi (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Frontend / UI ishlab chiquvchi (Web, Telegram demo)",
-          "role-devops": "DevOps / Deploy muhandisi (Docker, CI/CD)",
-          "role-content": "Kontent / Ovoz arxitektori (Promptlar, LLM, UX)",
-          "role-producer": "Produser / SMM / Targ'ibot (TikTok, Telegram)",
-          "role-other": "Boshqa",
-          "message-label": "Xabar",
-          "message-placeholder": "O'zingiz haqida gapirib bering va nega jamoada qo'shilmoqchi ekanligingizni aytib bering...",
-          "submit-btn": "Arizani yuborish",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (ixtiyoriy)",
+          "role-label": "Vakansiya *",
+          "role-placeholder": "Vakansiyani tanlang",
+          "role-cto": "Texnik direktor (CTO)",
+          "role-xai-architect": "XAI arxitektori",
+          "role-fullstack": "Fullstack ishlab chiquvchi (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro muhandisi (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML-muhandis / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX dizayneri (veb/mob)",
+          "role-content-maker": "Kontent-meyker / Marketer / TikTok",
+          "role-product-manager": "Mahsulot menejeri (Product/Project)",
+          "role-lawyer": "Huquqshunos / Hujjatlar almashinuvi",
+          "role-coordinator": "Hamkorlik koordinatori / sotuv / CRM",
+          "message-label": "O'zingiz haqida",
+          "message-placeholder": "O'zingiz, tajribangiz haqida gapirib bering va nega jamoada qo'shilmoqchi ekanligingizni aytib bering...",
+          "submit-btn": "Yuborish",
           "back-link": "← Bosh sahifaga qaytish"
         }
       },
       it: {
         translation: {
           "join-title": "Unisciti al Team",
+          "join-description": "Vuoi unirti a un team che costruisce intelligenza vocale per hotel? Compila il modulo — e saremo in contatto.",
           "name-label": "Nome",
-          "email-label": "Email",
-          "role-label": "Ruolo",
-          "role-placeholder": "Seleziona ruolo",
-          "role-backend": "Sviluppatore Backend (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Sviluppatore Frontend/UI (Web, demo Telegram)",
-          "role-devops": "DevOps / Ingegnere Deploy (Docker, CI/CD)",
-          "role-content": "Architetto Contenuto / Voce (Prompts, LLM, UX)",
-          "role-producer": "Produttore / SMM / Promozione (TikTok, Telegram)",
-          "role-other": "Altro",
-          "message-label": "Messaggio",
-          "message-placeholder": "Raccontaci di te e perché vuoi unirti al team...",
-          "submit-btn": "Invia Candidatura",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (opzionale)",
+          "role-label": "Posizione *",
+          "role-placeholder": "Seleziona posizione",
+          "role-cto": "Direttore Tecnico (CTO)",
+          "role-xai-architect": "Architetto XAI",
+          "role-fullstack": "Sviluppatore Fullstack (FastAPI, Frontend)",
+          "role-rasa-engineer": "Ingegnere Rasa Pro (CALM, LLM, Flow)",
+          "role-ml-engineer": "Ingegnere ML / Vision / Audio AI",
+          "role-ui-ux-designer": "Designer UI/UX (web/mobile)",
+          "role-content-maker": "Creatore di Contenuti / Marketer / TikTok",
+          "role-product-manager": "Product Manager (Product/Project)",
+          "role-lawyer": "Avvocato / Gestione Documentale",
+          "role-coordinator": "Coordinatore Partnership / Vendite / CRM",
+          "message-label": "Su di te",
+          "message-placeholder": "Raccontaci di te, esperienza e perché vuoi unirti al team...",
+          "submit-btn": "Invia",
           "back-link": "← Torna alla Home"
         }
       },
       de: {
         translation: {
           "join-title": "Dem Team beitreten",
+          "join-description": "Möchten Sie einem Team beitreten, das Sprachintelligenz für Hotels entwickelt? Füllen Sie das Formular aus — und wir sind in Kontakt.",
           "name-label": "Name",
-          "email-label": "Email",
-          "role-label": "Rolle",
-          "role-placeholder": "Rolle auswählen",
-          "role-backend": "Backend-Entwickler (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Frontend/UI-Entwickler (Web, Telegram Demo)",
-          "role-devops": "DevOps / Deploy-Ingenieur (Docker, CI/CD)",
-          "role-content": "Content / Voice-Architekt (Prompts, LLM, UX)",
-          "role-producer": "Produzent / SMM / Promotion (TikTok, Telegram)",
-          "role-other": "Andere",
-          "message-label": "Nachricht",
-          "message-placeholder": "Erzählen Sie uns von sich und warum Sie dem Team beitreten möchten...",
-          "submit-btn": "Bewerbung senden",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (optional)",
+          "role-label": "Position *",
+          "role-placeholder": "Position auswählen",
+          "role-cto": "Technischer Direktor (CTO)",
+          "role-xai-architect": "XAI-Architekt",
+          "role-fullstack": "Fullstack-Entwickler (FastAPI, Frontend)",
+          "role-rasa-engineer": "Rasa Pro-Ingenieur (CALM, LLM, Flow)",
+          "role-ml-engineer": "ML-Ingenieur / Vision / Audio AI",
+          "role-ui-ux-designer": "UI/UX-Designer (Web/Mobile)",
+          "role-content-maker": "Content Creator / Marketer / TikTok",
+          "role-product-manager": "Product Manager (Product/Project)",
+          "role-lawyer": "Anwalt / Dokumentenverwaltung",
+          "role-coordinator": "Partnership-Koordinator / Vertrieb / CRM",
+          "message-label": "Über sich",
+          "message-placeholder": "Erzählen Sie uns von sich, Ihrer Erfahrung und warum Sie dem Team beitreten möchten...",
+          "submit-btn": "Senden",
           "back-link": "← Zurück zur Startseite"
         }
       },
       fr: {
         translation: {
           "join-title": "Rejoindre l'Équipe",
+          "join-description": "Voulez-vous rejoindre une équipe qui construit l'intelligence vocale pour les hôtels ? Remplissez le formulaire — et nous serons en contact.",
           "name-label": "Nom",
-          "email-label": "Email",
-          "role-label": "Rôle",
-          "role-placeholder": "Sélectionner un rôle",
-          "role-backend": "Développeur Backend (Python/FastAPI + Rasa Pro)",
-          "role-frontend": "Développeur Frontend/UI (Web, démo Telegram)",
-          "role-devops": "DevOps / Ingénieur Deploy (Docker, CI/CD)",
-          "role-content": "Architecte Contenu / Voix (Prompts, LLM, UX)",
-          "role-producer": "Producteur / SMM / Promotion (TikTok, Telegram)",
-          "role-other": "Autre",
-          "message-label": "Message",
-          "message-placeholder": "Parlez-nous de vous et pourquoi vous voulez rejoindre l'équipe...",
-          "submit-btn": "Envoyer la Candidature",
+          "email-label": "Email *",
+          "telegram-label": "Telegram (optionnel)",
+          "role-label": "Poste *",
+          "role-placeholder": "Sélectionner un poste",
+          "role-cto": "Directeur Technique (CTO)",
+          "role-xai-architect": "Architecte XAI",
+          "role-fullstack": "Développeur Fullstack (FastAPI, Frontend)",
+          "role-rasa-engineer": "Ingénieur Rasa Pro (CALM, LLM, Flow)",
+          "role-ml-engineer": "Ingénieur ML / Vision / Audio AI",
+          "role-ui-ux-designer": "Designer UI/UX (web/mobile)",
+          "role-content-maker": "Créateur de Contenu / Marketer / TikTok",
+          "role-product-manager": "Product Manager (Product/Project)",
+          "role-lawyer": "Avocat / Gestion Documentaire",
+          "role-coordinator": "Coordinateur Partenariats / Ventes / CRM",
+          "message-label": "À propos de vous",
+          "message-placeholder": "Parlez-nous de vous, de votre expérience et pourquoi vous voulez rejoindre l'équipe...",
+          "submit-btn": "Envoyer",
           "back-link": "← Retour à l'Accueil"
         }
       }
@@ -548,16 +626,22 @@
     // Функция обновления контента формы
     function updateFormContent() {
       document.getElementById('join-title').textContent = i18next.t('join-title');
+      document.getElementById('join-description').textContent = i18next.t('join-description');
       document.getElementById('name-label').textContent = i18next.t('name-label');
       document.getElementById('email-label').textContent = i18next.t('email-label');
+      document.getElementById('telegram-label').textContent = i18next.t('telegram-label');
       document.getElementById('role-label').textContent = i18next.t('role-label');
       document.getElementById('role-placeholder').textContent = i18next.t('role-placeholder');
-      document.getElementById('role-backend').textContent = i18next.t('role-backend');
-      document.getElementById('role-frontend').textContent = i18next.t('role-frontend');
-      document.getElementById('role-devops').textContent = i18next.t('role-devops');
-      document.getElementById('role-content').textContent = i18next.t('role-content');
-      document.getElementById('role-producer').textContent = i18next.t('role-producer');
-      document.getElementById('role-other').textContent = i18next.t('role-other');
+      document.getElementById('role-cto').textContent = i18next.t('role-cto');
+      document.getElementById('role-xai-architect').textContent = i18next.t('role-xai-architect');
+      document.getElementById('role-fullstack').textContent = i18next.t('role-fullstack');
+      document.getElementById('role-rasa-engineer').textContent = i18next.t('role-rasa-engineer');
+      document.getElementById('role-ml-engineer').textContent = i18next.t('role-ml-engineer');
+      document.getElementById('role-ui-ux-designer').textContent = i18next.t('role-ui-ux-designer');
+      document.getElementById('role-content-maker').textContent = i18next.t('role-content-maker');
+      document.getElementById('role-product-manager').textContent = i18next.t('role-product-manager');
+      document.getElementById('role-lawyer').textContent = i18next.t('role-lawyer');
+      document.getElementById('role-coordinator').textContent = i18next.t('role-coordinator');
       document.getElementById('message-label').textContent = i18next.t('message-label');
       document.getElementById('message').placeholder = i18next.t('message-placeholder');
       document.getElementById('submit-btn').textContent = i18next.t('submit-btn');

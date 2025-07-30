@@ -24,18 +24,25 @@
 
 **Назначение**: Форма предназначена для привлечения специалистов в команду разработки MVP на базе Rasa Pro.
 
-**Доступные роли**:
-- Backend Developer (Python/FastAPI + Rasa Pro)
-- Frontend/UI Developer (Web, Telegram demo)
-- DevOps / Deploy Engineer (Docker, CI/CD)
-- Content / Voice Architect (Prompts, LLM, UX)
-- Producer / SMM / Promotion (TikTok, Telegram)
+**Доступные вакансии**:
+1. Технический директор (CTO)
+2. Архитектор XAI
+3. Fullstack-разработчик (FastAPI, Frontend)
+4. Rasa Pro инженер (CALM, LLM, Flow)
+5. ML-инженер / Vision / Audio AI
+6. UI/UX-дизайнер (веб/моб)
+7. Контент-мейкер / Маркетолог / TikTok
+8. Менеджер по продукту (Product/Project)
+9. Юрист / Документооборот
+10. Координатор по партнёрам / продажам / CRM
 
 **Функциональность**:
 - Мультиязычность (9 языков)
 - Отправка заявок на info@gromman.com
 - Адаптивный дизайн без изменения размеров при смене языка
-- Валидация полей формы
+- Валидация обязательных полей (Email, Вакансия)
+- Поле Telegram (опционально)
+- Описание над формой с призывом к действию
 
 ### Настройка фонового изображения
 Используется файл `hero_image_assistant.jpg`, размещённый в папке `assets/`. 

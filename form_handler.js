@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
+                telegram: formData.get('telegram'),
                 role: formData.get('role'),
                 message: formData.get('message'),
                 source: formData.get('source'),
@@ -42,7 +43,8 @@ function sendEmail(data) {
 
 Имя: ${data.name}
 Email: ${data.email}
-Роль: ${data.role}
+Telegram: ${data.telegram || 'Не указан'}
+Вакансия: ${data.role}
 Сообщение: ${data.message}
 Источник: ${data.source}
 Язык: ${data.language}
