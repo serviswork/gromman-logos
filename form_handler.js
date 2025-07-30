@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('join-form');
     
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Показываем индикатор загрузки
+            showLoadingState();
             
             // Получаем данные формы
             const formData = new FormData(form);
@@ -15,49 +18,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 role: formData.get('role'),
                 message: formData.get('message'),
                 source: formData.get('source'),
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
                 language: i18next.language || 'ru'
             };
             
             // Логируем данные в консоль (для отладки)
             console.log('Form submission:', data);
             
-            // Отправляем данные на email через mailto
-            sendEmail(data);
-            
-            // Показываем сообщение об успешной отправке
-            showSuccessMessage();
-            
-            // Очищаем форму
-            form.reset();
+            try {
+                // Отправляем данные на сервер
+                const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Показываем сообщение об успешной отправке
+                    showSuccessMessage();
+                    
+                    // Очищаем форму
+                    form.reset();
+                } else {
+                    // Показываем ошибку валидации
+                    showErrorMessage(result.errors || [result.message]);
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showErrorMessage(['Ошибка сети. Проверьте подключение к интернету.']);
+            } finally {
+                // Скрываем индикатор загрузки
+                hideLoadingState();
+            }
         });
     }
 });
 
-// Функция отправки email
-function sendEmail(data) {
-    const subject = encodeURIComponent('Новая заявка на присоединение к команде Groman Concierge');
-    const body = encodeURIComponent(`
-Новая заявка на присоединение к команде Groman Concierge
+// Функция показа состояния загрузки
+function showLoadingState() {
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+        submitBtn.style.opacity = '0.7';
+    }
+}
 
-Имя: ${data.name}
-Email: ${data.email}
-Telegram: ${data.telegram || 'Не указан'}
-Вакансия: ${data.role}
-Сообщение: ${data.message}
-Источник: ${data.source}
-Язык: ${data.language}
-Время отправки: ${new Date().toLocaleString()}
-
----
-Отправлено с формы на сайте gromman.com
-    `);
-    
-    const mailtoLink = `mailto:info@gromman.com?subject=${subject}&body=${body}`;
-    
-    // Открываем почтовый клиент
-    window.open(mailtoLink, '_blank');
+// Функция скрытия состояния загрузки
+function hideLoadingState() {
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = i18next.t('submit-btn') || 'Отправить';
+        submitBtn.style.opacity = '1';
+    }
 }
 
 // Функция показа сообщения об успешной отправке
@@ -105,6 +122,43 @@ function showSuccessMessage() {
             notification.parentNode.removeChild(notification);
         }
     }, 3000);
+}
+
+// Функция показа сообщения об ошибке
+function showErrorMessage(errors) {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 0, 0, 0.9);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        text-align: center;
+    `;
+    
+    // Формируем текст ошибки
+    const errorText = Array.isArray(errors) ? errors.join('\n') : errors;
+    notification.textContent = errorText;
+    
+    // Добавляем уведомление на страницу
+    document.body.appendChild(notification);
+    
+    // Удаляем уведомление через 5 секунд
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 5000);
 }
 
 // Функция для валидации email
