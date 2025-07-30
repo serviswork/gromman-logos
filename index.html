@@ -119,6 +119,29 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
+    .join-btn {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000000;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .join-btn:hover {
+      background: rgba(255, 255, 255, 1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
     /* Адаптивность для планшетов */
     @media (max-width: 768px) {
       .container {
@@ -139,6 +162,11 @@
       
       .email {
         font-size: 1.1rem;
+        padding: 0.6rem 1.2rem;
+      }
+      
+      .join-btn {
+        font-size: 1rem;
         padding: 0.6rem 1.2rem;
       }
     }
@@ -165,6 +193,11 @@
       
       .email {
         font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .join-btn {
+        font-size: 0.9rem;
         padding: 0.5rem 1rem;
       }
     }
@@ -302,6 +335,8 @@
     </p>
     
     <a href="mailto:info@gromman.com" class="email">info@gromman.com</a>
+    
+    <a href="join.html" class="join-btn" id="join-btn">Присоединиться к команде</a>
   </div>
 
   <div class="social-bar">
@@ -326,63 +361,72 @@
         translation: {
           slogan: "Building the voice intelligence of the future",
           subtitle: "We are a startup team creating live AI assistants for hotels, businesses, and everyday life.",
-          invite: "If you have interesting proposals or wish to participate — we gladly await. We are open to cooperation."
+          invite: "If you have interesting proposals or wish to participate — we gladly await. We are open to cooperation.",
+          "join-btn": "Join the Team"
         }
       },
       ru: {
         translation: {
           slogan: "Строим голосовой разум будущего",
           subtitle: "Мы — команда стартапа, создающая живых AI-ассистентов для отелей, бизнеса и повседневной жизни.",
-          invite: "Если у вас есть интересные предложения или желание участвовать — с удовольствием ждём. Мы открыты к сотрудничеству."
+          invite: "Если у вас есть интересные предложения или желание участвовать — с удовольствием ждём. Мы открыты к сотрудничеству.",
+          "join-btn": "Присоединиться к команде"
         }
       },
       es: {
         translation: {
           slogan: "Construyendo la inteligencia de voz del futuro",
           subtitle: "Somos un equipo de startup que crea asistentes de IA en vivo para hoteles, negocios y vida cotidiana.",
-          invite: "Si tienes propuestas interesantes o deseas participar, te esperamos con gusto. Estamos abiertos a la cooperación."
+          invite: "Si tienes propuestas interesantes o deseas participar, te esperamos con gusto. Estamos abiertos a la cooperación.",
+          "join-btn": "Únete al Equipo"
         }
       },
       uk: {
         translation: {
           slogan: "Будуємо голосовий розум майбутнього",
           subtitle: "Ми — команда стартапу, що створює живих AI-асистентів для готелів, бізнесу та повсякденного життя.",
-          invite: "Якщо у вас є цікаві пропозиції або бажання брати участь — з радістю чекаємо. Ми відкриті до співпраці."
+          invite: "Якщо у вас є цікаві пропозиції або бажання брати участь — з радістю чекаємо. Ми відкриті до співпраці.",
+          "join-btn": "Приєднатися до команди"
         }
       },
       kk: {
         translation: {
           slogan: "Болашақтың дауыстық интеллектісін құруда",
           subtitle: "Біз — қонақ үйлер, бизнес және күнделікті өмір үшін тірі AI-көмекшілер жасайтын стартап тобымыз.",
-          invite: "Егер сізде қызықты ұсыныстар немесе қатысуға құштарлық болса — қуана-қуана күтеміз. Біз ынтымақтастыққа ашықпыз."
+          invite: "Егер сізде қызықты ұсыныстар немесе қатысуға құштарлық болса — қуана-қуана күтеміз. Біз ынтымақтастыққа ашықпыз.",
+          "join-btn": "Топқа қосылу"
         }
       },
       uz: {
         translation: {
           slogan: "Kelajakning ovozli intellektini qurishda",
           subtitle: "Biz — mehmonxonalar, biznes va kundalik hayot uchun jonli AI-yordamchilar yaratadigan startap jamoasimaniz.",
-          invite: "Agar sizda qiziqarli takliflar yoki ishtirok etish istagi bo'lsa — xursandchilik bilan kutamiz. Biz hamkorlikka ochiqmiz."
+          invite: "Agar sizda qiziqarli takliflar yoki ishtirok etish istagi bo'lsa — xursandchilik bilan kutamiz. Biz hamkorlikka ochiqmiz.",
+          "join-btn": "Jamoada qo'shilish"
         }
       },
       it: {
         translation: {
           slogan: "Costruendo l'intelligenza vocale del futuro",
           subtitle: "Siamo un team di startup che crea assistenti AI dal vivo per hotel, aziende e vita quotidiana.",
-          invite: "Se hai proposte interessanti o desideri partecipare, ti aspettiamo volentieri. Siamo aperti alla cooperazione."
+          invite: "Se hai proposte interessanti o desideri partecipare, ti aspettiamo volentieri. Siamo aperti alla cooperazione.",
+          "join-btn": "Unisciti al Team"
         }
       },
       de: {
         translation: {
           slogan: "Wir bauen die Sprachintelligenz der Zukunft",
           subtitle: "Wir sind ein Startup-Team, das lebendige KI-Assistenten für Hotels, Unternehmen und den Alltag entwickelt.",
-          invite: "Wenn Sie interessante Vorschläge haben oder teilnehmen möchten, freuen wir uns darauf. Wir sind offen für Zusammenarbeit."
+          invite: "Wenn Sie interessante Vorschläge haben oder teilnehmen möchten, freuen wir uns darauf. Wir sind offen für Zusammenarbeit.",
+          "join-btn": "Dem Team beitreten"
         }
       },
       fr: {
         translation: {
           slogan: "Construire l'intelligence vocale du futur",
           subtitle: "Nous sommes une équipe de startup créant des assistants IA en direct pour les hôtels, les entreprises et la vie quotidienne.",
-          invite: "Si vous avez des propositions intéressantes ou souhaitez participer, nous vous attendons avec plaisir. Nous sommes ouverts à la coopération."
+          invite: "Si vous avez des propositions intéressantes ou souhaitez participer, nous vous attendons avec plaisir. Nous sommes ouverts à la coopération.",
+          "join-btn": "Rejoindre l'Équipe"
         }
       }
     };
@@ -413,6 +457,7 @@
       document.getElementById('slogan').textContent = i18next.t('slogan');
       document.getElementById('subtitle').textContent = i18next.t('subtitle');
       document.getElementById('invite').textContent = i18next.t('invite');
+      document.getElementById('join-btn').textContent = i18next.t('join-btn');
     }
 
     // Обработчик смены языка
