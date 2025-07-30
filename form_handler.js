@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: formData.get('email'),
                 role: formData.get('role'),
                 message: formData.get('message'),
+                source: formData.get('source'),
                 timestamp: new Date().toISOString(),
                 userAgent: navigator.userAgent,
                 language: i18next.language || 'ru'
@@ -21,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Логируем данные в консоль (для отладки)
             console.log('Form submission:', data);
             
-            // Здесь можно добавить отправку данных на сервер
-            // Например, через fetch API или FormData
+            // Отправляем данные на email через mailto
+            sendEmail(data);
             
             // Показываем сообщение об успешной отправке
             showSuccessMessage();
@@ -32,6 +33,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Функция отправки email
+function sendEmail(data) {
+    const subject = encodeURIComponent('Новая заявка на присоединение к команде Groman Concierge');
+    const body = encodeURIComponent(`
+Новая заявка на присоединение к команде Groman Concierge
+
+Имя: ${data.name}
+Email: ${data.email}
+Роль: ${data.role}
+Сообщение: ${data.message}
+Источник: ${data.source}
+Язык: ${data.language}
+Время отправки: ${new Date().toLocaleString()}
+
+---
+Отправлено с формы на сайте gromman.com
+    `);
+    
+    const mailtoLink = `mailto:info@gromman.com?subject=${subject}&body=${body}`;
+    
+    // Открываем почтовый клиент
+    window.open(mailtoLink, '_blank');
+}
 
 // Функция показа сообщения об успешной отправке
 function showSuccessMessage() {

@@ -7,6 +7,8 @@
 - `png/` — логотипы в формате PNG (цветные)
 - `bw/` — логотипы в чёрно-белом исполнении
 - `index.html` — адаптивная промо-страница
+- `join.html` — форма присоединения к команде
+- `form_handler.js` — обработчик формы
 
 ## Логотипы и фавиконы
 
@@ -16,6 +18,24 @@
 - `favicon-mail.svg` — фавикон для email-платформы (с конвертом)
 
 ## Промо-страница
+
+### Форма присоединения к команде
+Страница `join.html` содержит форму для сбора участников в **Groman Concierge Team**. 
+
+**Назначение**: Форма предназначена для привлечения специалистов в команду разработки MVP на базе Rasa Pro.
+
+**Доступные роли**:
+- Backend Developer (Python/FastAPI + Rasa Pro)
+- Frontend/UI Developer (Web, Telegram demo)
+- DevOps / Deploy Engineer (Docker, CI/CD)
+- Content / Voice Architect (Prompts, LLM, UX)
+- Producer / SMM / Promotion (TikTok, Telegram)
+
+**Функциональность**:
+- Мультиязычность (9 языков)
+- Отправка заявок на info@gromman.com
+- Адаптивный дизайн без изменения размеров при смене языка
+- Валидация полей формы
 
 ### Настройка фонового изображения
 Используется файл `hero_image_assistant.jpg`, размещённый в папке `assets/`. 

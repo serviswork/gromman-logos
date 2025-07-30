@@ -96,6 +96,9 @@
       padding: 2rem;
       backdrop-filter: blur(10px);
       margin-top: 1rem;
+      min-width: 400px;
+      max-width: 600px;
+      width: 100%;
     }
 
     .form-group {
@@ -123,6 +126,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
       transition: all 0.3s ease;
+      min-height: 50px;
     }
 
     .form-group input:focus,
@@ -155,6 +159,8 @@
       transition: all 0.3s ease;
       font-family: 'Inter', sans-serif;
       width: 100%;
+      min-width: 200px;
+      min-height: 50px;
     }
 
     .submit-btn:hover {
@@ -320,9 +326,11 @@
           <label for="role" id="role-label">Роль</label>
           <select id="role" name="role" required>
             <option value="" id="role-placeholder">Выберите роль</option>
-            <option value="developer" id="role-developer">Разработчик</option>
-            <option value="designer" id="role-designer">Дизайнер</option>
-            <option value="marketing" id="role-marketing">Маркетинг</option>
+            <option value="backend" id="role-backend">Бэкенд-разработчик (Python/FastAPI + Rasa Pro)</option>
+            <option value="frontend" id="role-frontend">Фронтенд / UI-разработчик (Web, Telegram-демо)</option>
+            <option value="devops" id="role-devops">DevOps / Инженер деплоя (Docker, CI/CD)</option>
+            <option value="content" id="role-content">Архитектор контента / голоса (Промпты, LLM, UX)</option>
+            <option value="producer" id="role-producer">Продюсер / SMM / Продвижение (TikTok, Telegram)</option>
             <option value="other" id="role-other">Другое</option>
           </select>
         </div>
@@ -331,6 +339,8 @@
           <label for="message" id="message-label">Сообщение</label>
           <textarea id="message" name="message" placeholder="Расскажите о себе и почему хотите присоединиться к команде..." required></textarea>
         </div>
+        
+        <input type="hidden" name="source" value="form_team_request">
         
         <button type="submit" class="submit-btn" id="submit-btn">Отправить заявку</button>
       </form>
@@ -350,9 +360,11 @@
           "email-label": "Email",
           "role-label": "Role",
           "role-placeholder": "Select role",
-          "role-developer": "Developer",
-          "role-designer": "Designer",
-          "role-marketing": "Marketing",
+          "role-backend": "Backend Developer (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Frontend/UI Developer (Web, Telegram demo)",
+          "role-devops": "DevOps / Deploy Engineer (Docker, CI/CD)",
+          "role-content": "Content / Voice Architect (Prompts, LLM, UX)",
+          "role-producer": "Producer / SMM / Promotion (TikTok, Telegram)",
           "role-other": "Other",
           "message-label": "Message",
           "message-placeholder": "Tell us about yourself and why you want to join the team...",
@@ -367,9 +379,11 @@
           "email-label": "Email",
           "role-label": "Роль",
           "role-placeholder": "Выберите роль",
-          "role-developer": "Разработчик",
-          "role-designer": "Дизайнер",
-          "role-marketing": "Маркетинг",
+          "role-backend": "Бэкенд-разработчик (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Фронтенд / UI-разработчик (Web, Telegram-демо)",
+          "role-devops": "DevOps / Инженер деплоя (Docker, CI/CD)",
+          "role-content": "Архитектор контента / голоса (Промпты, LLM, UX)",
+          "role-producer": "Продюсер / SMM / Продвижение (TikTok, Telegram)",
           "role-other": "Другое",
           "message-label": "Сообщение",
           "message-placeholder": "Расскажите о себе и почему хотите присоединиться к команде...",
@@ -384,9 +398,11 @@
           "email-label": "Email",
           "role-label": "Rol",
           "role-placeholder": "Seleccionar rol",
-          "role-developer": "Desarrollador",
-          "role-designer": "Diseñador",
-          "role-marketing": "Marketing",
+          "role-backend": "Desarrollador Backend (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Desarrollador Frontend/UI (Web, demo Telegram)",
+          "role-devops": "DevOps / Ingeniero de Despliegue (Docker, CI/CD)",
+          "role-content": "Arquitecto de Contenido / Voz (Prompts, LLM, UX)",
+          "role-producer": "Productor / SMM / Promoción (TikTok, Telegram)",
           "role-other": "Otro",
           "message-label": "Mensaje",
           "message-placeholder": "Cuéntanos sobre ti y por qué quieres unirte al equipo...",
@@ -401,9 +417,11 @@
           "email-label": "Email",
           "role-label": "Роль",
           "role-placeholder": "Виберіть роль",
-          "role-developer": "Розробник",
-          "role-designer": "Дизайнер",
-          "role-marketing": "Маркетинг",
+          "role-backend": "Бекенд-розробник (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Фронтенд / UI-розробник (Web, Telegram-демо)",
+          "role-devops": "DevOps / Інженер деплою (Docker, CI/CD)",
+          "role-content": "Архітектор контенту / голосу (Промпти, LLM, UX)",
+          "role-producer": "Продюсер / SMM / Просування (TikTok, Telegram)",
           "role-other": "Інше",
           "message-label": "Повідомлення",
           "message-placeholder": "Розкажіть про себе і чому хочете приєднатися до команди...",
@@ -418,9 +436,11 @@
           "email-label": "Email",
           "role-label": "Рөл",
           "role-placeholder": "Рөлді таңдаңыз",
-          "role-developer": "Әзірлеуші",
-          "role-designer": "Дизайнер",
-          "role-marketing": "Маркетинг",
+          "role-backend": "Бекенд-әзірлеуші (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Фронтенд / UI-әзірлеуші (Web, Telegram-демо)",
+          "role-devops": "DevOps / Деплой инженері (Docker, CI/CD)",
+          "role-content": "Контент / Дауыс сәулетшісі (Промпттар, LLM, UX)",
+          "role-producer": "Продюсер / SMM / Жарнама (TikTok, Telegram)",
           "role-other": "Басқа",
           "message-label": "Хабарлама",
           "message-placeholder": "Өзіңіз туралы айтыңыз және неге топқа қосылғыңыз келетінін айтыңыз...",
@@ -435,9 +455,11 @@
           "email-label": "Email",
           "role-label": "Rol",
           "role-placeholder": "Rolni tanlang",
-          "role-developer": "Ishlab chiquvchi",
-          "role-designer": "Dizayner",
-          "role-marketing": "Marketing",
+          "role-backend": "Backend ishlab chiquvchi (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Frontend / UI ishlab chiquvchi (Web, Telegram demo)",
+          "role-devops": "DevOps / Deploy muhandisi (Docker, CI/CD)",
+          "role-content": "Kontent / Ovoz arxitektori (Promptlar, LLM, UX)",
+          "role-producer": "Produser / SMM / Targ'ibot (TikTok, Telegram)",
           "role-other": "Boshqa",
           "message-label": "Xabar",
           "message-placeholder": "O'zingiz haqida gapirib bering va nega jamoada qo'shilmoqchi ekanligingizni aytib bering...",
@@ -452,9 +474,11 @@
           "email-label": "Email",
           "role-label": "Ruolo",
           "role-placeholder": "Seleziona ruolo",
-          "role-developer": "Sviluppatore",
-          "role-designer": "Designer",
-          "role-marketing": "Marketing",
+          "role-backend": "Sviluppatore Backend (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Sviluppatore Frontend/UI (Web, demo Telegram)",
+          "role-devops": "DevOps / Ingegnere Deploy (Docker, CI/CD)",
+          "role-content": "Architetto Contenuto / Voce (Prompts, LLM, UX)",
+          "role-producer": "Produttore / SMM / Promozione (TikTok, Telegram)",
           "role-other": "Altro",
           "message-label": "Messaggio",
           "message-placeholder": "Raccontaci di te e perché vuoi unirti al team...",
@@ -469,9 +493,11 @@
           "email-label": "Email",
           "role-label": "Rolle",
           "role-placeholder": "Rolle auswählen",
-          "role-developer": "Entwickler",
-          "role-designer": "Designer",
-          "role-marketing": "Marketing",
+          "role-backend": "Backend-Entwickler (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Frontend/UI-Entwickler (Web, Telegram Demo)",
+          "role-devops": "DevOps / Deploy-Ingenieur (Docker, CI/CD)",
+          "role-content": "Content / Voice-Architekt (Prompts, LLM, UX)",
+          "role-producer": "Produzent / SMM / Promotion (TikTok, Telegram)",
           "role-other": "Andere",
           "message-label": "Nachricht",
           "message-placeholder": "Erzählen Sie uns von sich und warum Sie dem Team beitreten möchten...",
@@ -486,9 +512,11 @@
           "email-label": "Email",
           "role-label": "Rôle",
           "role-placeholder": "Sélectionner un rôle",
-          "role-developer": "Développeur",
-          "role-designer": "Designer",
-          "role-marketing": "Marketing",
+          "role-backend": "Développeur Backend (Python/FastAPI + Rasa Pro)",
+          "role-frontend": "Développeur Frontend/UI (Web, démo Telegram)",
+          "role-devops": "DevOps / Ingénieur Deploy (Docker, CI/CD)",
+          "role-content": "Architecte Contenu / Voix (Prompts, LLM, UX)",
+          "role-producer": "Producteur / SMM / Promotion (TikTok, Telegram)",
           "role-other": "Autre",
           "message-label": "Message",
           "message-placeholder": "Parlez-nous de vous et pourquoi vous voulez rejoindre l'équipe...",
@@ -524,9 +552,11 @@
       document.getElementById('email-label').textContent = i18next.t('email-label');
       document.getElementById('role-label').textContent = i18next.t('role-label');
       document.getElementById('role-placeholder').textContent = i18next.t('role-placeholder');
-      document.getElementById('role-developer').textContent = i18next.t('role-developer');
-      document.getElementById('role-designer').textContent = i18next.t('role-designer');
-      document.getElementById('role-marketing').textContent = i18next.t('role-marketing');
+      document.getElementById('role-backend').textContent = i18next.t('role-backend');
+      document.getElementById('role-frontend').textContent = i18next.t('role-frontend');
+      document.getElementById('role-devops').textContent = i18next.t('role-devops');
+      document.getElementById('role-content').textContent = i18next.t('role-content');
+      document.getElementById('role-producer').textContent = i18next.t('role-producer');
       document.getElementById('role-other').textContent = i18next.t('role-other');
       document.getElementById('message-label').textContent = i18next.t('message-label');
       document.getElementById('message').placeholder = i18next.t('message-placeholder');
