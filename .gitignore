@@ -39,4 +39,8 @@ build/
 
 # SMTP Configuration
 .env
-env.example 
+env.example
+
+# PM2 Logs
+logs/
+*.log 
