@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://gromman.com', 'https://www.gromman.com'],
-  credentials: true
+  origin: ['http://localhost:3000', 'https://gromman.com', 'https://www.gromman.com', 'https://gromman-logos.pages.dev'],
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Rate limiting
@@ -30,6 +32,7 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Serve static files
 app.use(express.static('.'));
+app.use('/public', express.static('public'));
 
 // Validate environment variables
 function validateEnv() {
@@ -195,6 +198,10 @@ app.get('/', (req, res) => {
 
 app.get('/join', (req, res) => {
   res.sendFile(__dirname + '/join.html');
+});
+
+app.get('/test-smtp', (req, res) => {
+  res.sendFile(__dirname + '/public/test-smtp.html');
 });
 
 // Error handling middleware

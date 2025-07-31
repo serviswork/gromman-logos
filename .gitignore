@@ -43,4 +43,13 @@ env.example
 
 # PM2 Logs
 logs/
-*.log 
+*.log
+
+# Production
+.env
+.env.local
+.env.production
+
+# Platform specific
+.fly/
+railway.json 
