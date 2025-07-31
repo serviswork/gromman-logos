@@ -133,6 +133,40 @@ cp .env.template .env
 # Отредактируйте .env и добавьте ваши значения
 ```
 
+## 🌐 Cloudflare Tunnel Setup
+
+Для работы формы на сайте требуется настроить Cloudflare Tunnel для доступа к backend API.
+
+### Быстрая настройка:
+
+1. **Создать туннель:**
+   ```bash
+   cloudflared tunnel create gromman-api
+   cloudflared tunnel route dns gromman-api api.gromman.com
+   ```
+
+2. **Настроить конфигурацию:**
+   ```bash
+   # Создать ~/.cloudflared/config.yml
+   tunnel: YOUR_TUNNEL_ID
+   credentials-file: /path/to/credentials.json
+   
+   ingress:
+     - hostname: api.gromman.com
+       service: http://localhost:3000
+     - service: http_status:404
+   ```
+
+3. **Запустить туннель:**
+   ```bash
+   cloudflared tunnel run gromman-api
+   ```
+
+4. **Обновить форму:**
+   В `join.html` изменить URL на `https://api.gromman.com/api/submit-form`
+
+Подробная инструкция в файле `CLOUDFLARE_TUNNEL_SETUP.md`.
+
 ## Использование
 Все логотипы предназначены только для внутреннего использования, презентаций и брендирования продуктов Gromman AI.
 

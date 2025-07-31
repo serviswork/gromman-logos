@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://gromman.com', 'https://www.gromman.com', 'https://gromman-logos.pages.dev'],
+  origin: ['http://localhost:3000', 'https://gromman.com', 'https://www.gromman.com', 'https://gromman-logos.pages.dev', 'https://api.gromman.com'],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']

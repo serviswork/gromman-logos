@@ -1,0 +1,7 @@
+tunnel: 3ceffad9-bfcc-471c-864b-8e36a1dac6ca
+credentials-file: /Users/gennadii/.cloudflared/3ceffad9-bfcc-471c-864b-8e36a1dac6ca.json
+
+ingress:
+  - hostname: api.gromman.com
+    service: http://localhost:3000
+  - service: http_status:404 
