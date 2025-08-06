@@ -301,13 +301,15 @@
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       overflow: hidden;
-      transition: all 0.3s ease;
+      /* Убираем transition, который может вызывать дребезжание */
+      /* transition: all 0.3s ease; */
     }
 
-    .convai-widget-container:hover {
+    /* Убираем hover-эффект, который вызывает дребезжание */
+    /* .convai-widget-container:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-    }
+    } */
 
     /* Адаптивность для виджета */
     @media (max-width: 768px) {
