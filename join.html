@@ -291,6 +291,44 @@
         font-size: 1.3rem;
       }
     }
+
+    /* Стили для ElevenLabs Convai виджета */
+    .convai-widget-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .convai-widget-container:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Адаптивность для виджета */
+    @media (max-width: 768px) {
+      .convai-widget-container {
+        bottom: 20px;
+        right: 15px;
+        left: 15px;
+        width: calc(100% - 30px);
+        max-width: 350px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .convai-widget-container {
+        bottom: 15px;
+        right: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -711,5 +749,12 @@
       }
     });
   </script>
+
+  <!-- ElevenLabs Convai Widget -->
+  <div class="convai-widget-container">
+    <elevenlabs-convai agent-id="agent_1601k1ye3tj0fkh9k5mwzwgncfw7"></elevenlabs-convai>
+  </div>
+  
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html> 
